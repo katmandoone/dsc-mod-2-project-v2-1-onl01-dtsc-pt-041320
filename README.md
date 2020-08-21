@@ -13,6 +13,8 @@ We'll be using the OSEMiN workflow to take us step-by-step through this process.
 This one is pretty easy, as the data has already been provided for us. We just need to load the .csv file into a DataFrame.
 I also created a scatter matrix to see how each variable relates to price.
 
+<img src="scatter_matrix.png">
+
 ## Scrub
 
 This is a little more involved. We'll check out our data, deal with null values, remove outliers, normalize, and one-hot encode our categorical variables.
@@ -29,6 +31,10 @@ Once we've gotten a good look at all the data, we'll use what we've observed to 
 
 I ended up refining the model three times. The first just removes undesirable features with high p-values. The second uses the log transformation of the price, and the third uses the log transformation of all continuous numerical values.
 
+<img src="model.png">
+
+<img src="qqplot.png">
+
 ## iNterpret
 
 Once we've made our model, we have to give some thought to what it means. Which features are the most important?
@@ -44,3 +50,7 @@ We apply that same logic to 'floors' and 'grade' to find that for each increment
 As for the continuous numerical variables, the square footage of the home shows the most effect, with a 1% increase in square footage adding an expected 0.4% increase in price. The variable 'sqft_living15' is the square footage of a homes 15 nearest neighbors, and a 1% increase shows an expected 0.25% increase in a home's price. Lastly, the square footage of a home's lot has a coefficient of 0.1117, meaning that a 1% increase in lot size amounts to an expected 0.11% increase in price. 
 
 As for location, the Seattle and East Urban regions tend to have the highest positive influence on price. South Urban and South Rural homes tend to be the most negatively influenced.
+
+## Recommendations
+
+Based on the model, I would recommend that potential homebuyers mainly consider location when making an offer on a home. The Seattle and East Urban regions are the regions with the highest-selling homes. Homes on the waterfront are also significantly more valuable. Should a potential homebuyer be looking to invest in a home for potential profit later, adding to the square footage of the home can be expected to significantly raise the value, but it should also be considered that the square footage of nearby homes also affects the price.
